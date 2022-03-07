@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD NEW TASK | TO-DO-LIST</title>
+</head>
+<body>
+    <h1>
+        Add the New Task to your List
+    </h1>
+    <form action="/new" method="post">
+        <label for="taskname">Enter the Name of the Task</label>
+        <input type="text" name="taskname" required><br>
+        <label for="taskdays">No. of Days the Task to be Completed</label>
+        <input type="number" name="taskdays" required><br>
+        <label for="taskdescription">Enter the Description</label>
+        <textarea name="taskdescription" cols="30" rows="10" required></textarea><br>
+        <label for="taskdate">Date: </label>
+        <input type="date" name="taskdate" required><br>
+        <br>
+        <button>Submit</button>
+    </form>
+    <br>
+    <br>
+    <a href="/"><button>HOMEPAGE</button></a>    
+</body>
+</html>

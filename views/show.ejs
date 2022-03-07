@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your tasks</title>
+    <style>
+        table, th, td {
+            margin-left: 100px;
+            margin-top: 50px;
+          border:1px solid red;
+        }
+        </style>
+</head>
+<body>
+    <h1 style="margin-left: 40%;">Your Tasks are as follows</h1>
+    <h2>Welcome <%= messages %> </h2>
+    <table style="width: 80%;">
+    <tr>
+        <th>Name of the Task</th> 
+        <th>Days Left</th>
+        <th>Description</th>
+        <th>Task Set on Date</th> 
+        <th>Task by: </th>
+        <th>DELETE</th> 
+    </tr>   
+    <% for (let tasks of todolisttasks) {%>
+        <tr>
+            <td style="text-align: center;"><%= tasks.taskname %> </td>
+            <td style="text-align: center;"><%= tasks.taskdays %> </td>
+            <td style="text-align: center;"><%= tasks.taskdescription %> </td>
+            <td style="text-align: center;"><%= tasks.taskdate %> </td>
+            <td style="text-align: center;"><%= tasks.taskby.personname %> </td>
+            <% if (tasks.taskby._id == currentuser){ %> 
+            <td style="text-align: center;"><form action="/new/<%= tasks._id%>?_method=DELETE" method="post"><button>DELETE</button></form></td>
+            <% } %> 
+        </tr>
+        <% } %>  
+    </table>
+    <a href="/"><button>Back to Homepage</button></a><br>
+    <form action="/signout" method="post"><button>Sign Out</button></form>
+</body>
+</html>
