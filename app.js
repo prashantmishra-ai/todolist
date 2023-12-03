@@ -4,14 +4,14 @@ const methodOverride = require('method-override')
 const Todolist = require('./models/todolist.js')
 const User = require('./models/user')
 const AppError = require('./AppError')
-const Router = require('./Router/Router.js')
 const cookie = require('cookie-parser')
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
 const session = require('express-session')
 const brcypt = require('bcrypt')
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://127.0.0.1:27017/todolist')
+const url = "mongodb+srv://prashantmishra:prashant123@cluster0.iabfukt.mongodb.net/?retryWrites=true&w=majority"
+mongoose.connect(url)
 
 app = express();
 app.use(session({
@@ -27,7 +27,6 @@ app.set('views',path.join(__dirname, 'views'))
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser('Eflsdoksa123'))
 app.use(methodOverride('_method'))
-app.use('/admin', Router )
 app.get('/new', (req, res)=>{
     if(!req.session.user_id){
         req.flash('info', 'you need to Login first')
